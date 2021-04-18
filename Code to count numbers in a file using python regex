@@ -1,0 +1,10 @@
+import re
+
+file = open("FILE_NAME.txt")
+mylist=list()
+for line in file:
+    line =line.strip()
+    mylist.extend(re.findall('[0-9]+',line))
+
+Sum = sum([int(i) for i in mylist if type(i)== int or i.isdigit()])
+print(Sum)
