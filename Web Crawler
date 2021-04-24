@@ -1,0 +1,19 @@
+from urllib import request
+from bs4 import BeautifulSoup
+
+# input : 'http://py4e-data.dr-chuck.net/known_by_Kasper.html'
+url = input('Enter URL: ')
+count = int(input('Enter count: '))
+position = int(input('Enter position: '))-1
+html = request.urlopen(url).read()
+
+soup = BeautifulSoup(html, "html.parser")
+tags = soup('a')
+
+print(url)
+for i in range(count):
+    link = tags[position].get('href', None)
+    print(link)
+    html = request.urlopen(link).read()
+    soup = BeautifulSoup(html, "html.parser")
+    tags = soup('a')
